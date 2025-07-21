@@ -2,3 +2,14 @@ main {
   margin-left: 230px;
   padding: 15px;
 }
+
+.btn-crear {
+  background-color: #f26030;
+  color: white;
+  border: none;
+  width: 170px;
+}
+
+.btn-crear:hover {
+  background-color: #d94f25;
+}

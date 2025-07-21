@@ -1,15 +1,12 @@
-<div class="container align-items-center">
+<div class="container align-items-center mt-5">
   <div class="row align-items-center">
-    <div class="col-xs-10 col-lg-5 card px-2 ">
+    <div class="col-12 col-lg-6 px-2">
       <div class="card-body text-center">
-        <h2 class="my-2">Recetario</h2>
-        <p class="my-2">Comer mejor es vivir mejor</p>
+        <img src="assets/img/img-login.jpg" alt="" >
       </div>
     </div>
-
-    <div class="col-xs-10 col-lg-5 container">
-      <div class="row">
-
+    <div class="col-12 col-lg-6 px-2">
+      <div class="form">
         <div class="my-2 row">
           <h1 class="text-center">Ingreso</h1>
         </div>
@@ -30,12 +27,12 @@
             <input #contrasena type="password" class="form-control" placeholder="*********">
           </div>
         </div>
-        <div class="col-12 text-center mt-3">
+        <div class="col-12 text-center form-ingreso">
           <button (click)="loginUsuario(usuario.value, contrasena.value)" type="button"
-            class="btn btn-info col-8">Ingresar</button>
+            class="btn col-8">Ingresar</button>
         </div>
         <div class="col-12 text-center mt-2">
-          <p>¿No tienes cuenta? <a href="/registro">Registrate</a></p>
+          <p>¿Aún no tienes cuenta? <a href="/registro">Regístrate</a></p>
         </div>
       </div>
     </div>

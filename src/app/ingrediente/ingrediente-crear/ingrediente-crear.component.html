@@ -1,169 +1,80 @@
 <div class="container-fluid">
   <div class="row">
-    <app-encabezado></app-encabezado>
+    <div class="col-md-3 col-lg-2 p-0 bg-light vh-100">
+      <app-encabezado></app-encabezado>
+    </div>
+
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <h3>
-        Nuevo ingrediente
-      </h3>
+      <h1 class="mt-4 mb-3">Nuevo ingrediente</h1>
 
-      <form
-      [formGroup]="ingredienteForm"
-      (ngSubmit)="!ingredienteForm.invalid && crearIngrediente(ingredienteForm.value)"
-      >
+      <form [formGroup]="ingredienteForm" (ngSubmit)="!ingredienteForm.invalid && crearIngrediente(ingredienteForm.value)">
         <div class="row">
-          <div class="col col-6">
-            <!--Nombre-->
-            <div class="form-group mx-sm-3 mb-2">
+          <div class="col-md-6">
+
+            <!-- Nombre -->
+            <div class="form-group mb-3">
               <label for="nombre">Nombre</label>
-              <input
-                novalidate
-                id="nombre"
-                class="form-control"
-                formControlName="nombre"
-                placeholder="Nombre"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                  ingredienteForm.get('nombre')!.hasError('required') &&
-                  ingredienteForm.get('nombre')!.touched
-                "
-              >
-                Contenido requerido
-              </div>
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="ingredienteForm.get('nombre')!.hasError('minlength')"
-              >
-                El contenido es muy corto, debe tener al menos dos caracteres.
+              <input id="nombre" class="form-control" formControlName="nombre" placeholder="Nombre" />
+              <div *ngIf="ingredienteForm.get('nombre')?.touched">
+                <div *ngIf="ingredienteForm.get('nombre')?.hasError('required')" class="alert alert-danger">Contenido requerido</div>
+                <div *ngIf="ingredienteForm.get('nombre')?.hasError('minlength')" class="alert alert-danger">Debe tener al menos dos caracteres.</div>
               </div>
             </div>
 
-            <!--Unidad-->
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="apellido">Unidad</label>
-              <input
-                novalidate
-                id="unidad"
-                class="form-control"
-                formControlName="unidad"
-                placeholder="Unidad de medida"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                  ingredienteForm.get('unidad')!.hasError('required') &&
-                  ingredienteForm.get('unidad')!.touched
-                "
-              >
-                Contenido requerido
-              </div>
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="ingredienteForm.get('unidad')!.hasError('minlength')"
-              >
-                El contenido es muy corto, debe tener al menos dos caracteres.
+            <!-- Unidad -->
+            <div class="form-group mb-3">
+              <label for="unidad">Unidad</label>
+              <input id="unidad" class="form-control" formControlName="unidad" placeholder="Unidad de medida" />
+              <div *ngIf="ingredienteForm.get('unidad')?.touched">
+                <div *ngIf="ingredienteForm.get('unidad')?.hasError('required')" class="alert alert-danger">Contenido requerido</div>
+                <div *ngIf="ingredienteForm.get('unidad')?.hasError('minlength')" class="alert alert-danger">Debe tener al menos dos caracteres.</div>
               </div>
             </div>
 
-            <!--Valor unitario-->
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="descripcion">Valor unitario</label>
-              <input
-                novalidate
-                id="costo"
-                type="number"
-                class="form-control"
-                formControlName="costo"
-                placeholder="Costo"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                  ingredienteForm.get('costo')!.hasError('required') &&
-                  ingredienteForm.get('costo')!.touched
-                "
-              >
-                Por favor diligencie este campo
+            <!-- Valor unitario -->
+            <div class="form-group mb-3">
+              <label for="costo">Valor unitario</label>
+              <input id="costo" type="number" class="form-control" formControlName="costo" placeholder="Costo" />
+              <div *ngIf="ingredienteForm.get('costo')?.touched && ingredienteForm.get('costo')?.hasError('required')" class="alert alert-danger">Por favor diligencie este campo</div>
+            </div>
+
+            <!-- Sitio de compra -->
+            <div class="form-group mb-3">
+              <label for="sitio">Sitio de compra</label>
+              <input id="sitio" class="form-control" formControlName="sitio" placeholder="Tienda / Supermercado / Lugar" />
+              <div *ngIf="ingredienteForm.get('sitio')?.touched">
+                <div *ngIf="ingredienteForm.get('sitio')?.hasError('required')" class="alert alert-danger">Contenido requerido</div>
+                <div *ngIf="ingredienteForm.get('sitio')?.hasError('minlength')" class="alert alert-danger">Debe tener al menos dos caracteres.</div>
               </div>
             </div>
 
-            <!--Sitio de compra-->
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="nombre">Sitio de compra</label>
-              <input
-                novalidate
-                id="sitio"
-                class="form-control"
-                formControlName="sitio"
-                placeholder="Tienda / Supermercado / Lugar"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                  ingredienteForm.get('sitio')!.hasError('required') &&
-                  ingredienteForm.get('sitio')!.touched
-                "
-              >
-                Contenido requerido
-              </div>
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="ingredienteForm.get('sitio')!.hasError('minlength')"
-              >
-                El contenido es muy corto, debe tener al menos dos caracteres.
-              </div>
+            <!-- Calorias por unidad -->
+            <div class="form-group mb-3">
+              <label for="calorias">Calorías por unidad</label>
+              <input id="calorias" type="number" class="form-control" formControlName="calorias" placeholder="Calorías" />
+              <div *ngIf="ingredienteForm.get('calorias')?.touched && ingredienteForm.get('calorias')?.hasError('required')" class="alert alert-danger">Por favor diligencie este campo</div>
             </div>
 
-            <!--Calorías por unidad-->
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="talla">Calorías por unidad</label>
-              <input
-                novalidate
-                id="calorias"
-                type="number"
-                class="form-control"
-                formControlName="calorias"
-                placeholder="Calorias"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                  ingredienteForm.get('calorias')!.hasError('required') &&
-                  ingredienteForm.get('calorias')!.touched
-                "
-              >
-                Por favor diligencie este campo
-              </div>
-            </div>
-
-            <!--Restaurante-->
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="talla">Restaurante</label>
-            <!--  <input
-                novalidate
-                id="calorias"
-                type="number"
-                class="form-control"
-                formControlName="calorias"
-                placeholder="Calorias"
-              />-->
-
-              <mat-form-field appearance="outline">
-              <mat-select
-              id="idRestaurante"
-              [formControl]="idRestaurante"
-              placeholder="Elegir Restaurante"
-              >
-              <mat-option *ngFor="let restaurante of listaRestaurantes" [value]="restaurante.id">{{restaurante.nombre}}</mat-option>
-              </mat-select>
+            <!-- Restaurante -->
+            <div class="form-group mb-4">
+              <label for="idRestaurante">Restaurante</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-select id="idRestaurante" [formControl]="idRestaurante" placeholder="Elegir restaurante">
+                  <mat-option *ngFor="let restaurante of listaRestaurantes" [value]="restaurante.id">
+                    {{ restaurante.nombre }}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
+
+            <!-- Botones -->
+                <div class="col-12 text-center my-4">
+              <button type="button" class="btn btn-secondary mx-3" (click)="cancelarIngrediente()">Cancelar</button>
+              <button type="submit" class="btn btn-crear mx-3" [disabled]="!ingredienteForm.valid">Crear</button>
+            </div>
+
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="!ingredienteForm.valid">Crear</button>&nbsp;
-        <button type="button" class="btn btn-danger ml-3" (click)="cancelarIngrediente()">Cancelar</button>
       </form>
     </main>
   </div>

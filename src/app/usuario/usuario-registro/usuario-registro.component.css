@@ -1,0 +1,43 @@
+img{
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;   
+  display: block;
+  margin: 0 auto;      
+}
+
+.card{
+    border: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.btn{
+    background-color:#f26030;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.form{
+    padding: 40px;
+    padding-left: 0;
+}
+
+.form-ingreso{
+   padding: 40px;
+   padding-left: 0;
+}
+
+.form-control{
+  width: 80%;
+}
+
+h1{
+  font-weight: bold;
+}
+
+a{
+    color:#f26030;
+}
