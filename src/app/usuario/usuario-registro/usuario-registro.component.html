@@ -1,14 +1,13 @@
-<div class="container align-items-center">
+<div class="container align-items-center mt-5">
   <div class="row align-items-center">
-    <div class="col-xs-10 col-lg-5 card px-2 ">
+     <div class="col-12 col-lg-6 px-2">
       <div class="card-body text-center">
-        <h2 class="my-2">Recetario</h2>
-        <p class="my-2">Comer mejor es vivir mejor</p>
+         <img src="assets/img/img-login.jpg" alt="" >
       </div>
     </div>
 
-    <div class="col-xs-10 col-lg-5 container">
-      <div class="row">
+     <div class="col-12 col-lg-6 px-2">
+      <div class="form">
 
         <div class="my-2 row">
           <h1 class="text-center">Registro</h1>
@@ -28,7 +27,7 @@
               Debe ingresar un usuario para registrarse
             </div>
             <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('usuario')?.hasError('maxlength')">
-              El usuario no debe exceder los 50 carácteres
+              El usuario no debe exceder los 50 caracteres
             </div>
 
           </div>
@@ -45,10 +44,10 @@
               Debe ingresar una contraseña para registrarse
             </div>
             <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('maxlength')">
-              La contraseña no debe exceder los 50 carácteres
+              La contraseña no debe exceder los 50 caracteres
             </div>
             <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('minlength')">
-              La contraseña debe tener más de 4 carácteres
+              La contraseña debe tener más de 4 caracteres
             </div>
           </div>
 
@@ -75,7 +74,7 @@
             </div>
           </div>
 
-          <div class="col-12 text-center mt-3">
+          <div class="col-12 text-center mt-3 form-ingreso">
             <button type="submit" class="btn btn-warning col-8"
               [disabled]="!usuarioForm.valid || usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">Registrarse</button>
           </div>

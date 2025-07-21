@@ -1,21 +1,29 @@
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-  <div class="position-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link" href="/restaurantes/:id">Restaurantes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/recetas">Recetas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/ingredientes">Ingredientes</a>
-      </li>
-      <li class="nav-item" *ngIf="rol === 'Chef'">
-        <a class="nav-link" [href]="'/menus/' + idUsuario">Menus</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/">Salir</a>
-      </li>
-    </ul>
-  </div>
+<nav id="sidebar" class="sidebar-custom">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/restaurantes/:id">
+        🍽 Restaurantes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/recetas">
+        📖 Recetas
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/ingredientes">
+        🧂 Ingredientes
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="rol === 'Chef'">
+      <a class="nav-link" [href]="'/menus/' + idUsuario">
+        📋 Menús
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link salir" href="/">
+        🚪 Salir
+      </a>
+    </li>
+  </ul>
 </nav>
