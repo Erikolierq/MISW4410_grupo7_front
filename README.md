@@ -1,4 +1,4 @@
-# MISW4410_grupo7_front
+# Recetario
 
 Step 1:
 ```bash
