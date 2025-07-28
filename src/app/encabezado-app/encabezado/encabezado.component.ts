@@ -16,6 +16,7 @@ export class EncabezadoComponent implements OnInit {
   rol: string;
   usuario: string;
   message: string;
+
   constructor(
     private routerPath: Router,
     private router: ActivatedRoute,
@@ -23,21 +24,28 @@ export class EncabezadoComponent implements OnInit {
     private encabezadoService: EncabezadoService) { }
 
     ngOnInit(): void {
-      // Assign the user ID to idUsuario (replace with your logic)
-    const idUsuario = this.idUsuario; // Example user ID
+  // Obtener el token desde sessionStorage
+  const token = sessionStorage.getItem('token');
 
-    this.encabezadoService.darRolUsuario(idUsuario).subscribe(
-      (data: Encabezado) => {
-        // Assign the data to component variables
-        this.nombre = data.nombre;
-        this.rol = data.rol;
-        this.usuario = data.usuario;
+  if (token) {
+    this.encabezadoService.darRolUsuario(token).subscribe(
+      (data) => {
+        this.usuario = data.identity.id;
+        this.rol = data.identity.rol;
+        this.nombre = ''; 
       },
       (error) => {
-        // Handle any errors here
-        console.error('Error:', error);
+        console.error('Error al verificar el token:', error);
+        this.toastr.error('Token inválido o sesión expirada');
+        this.routerPath.navigate(['/auth/login']);
       }
     );
-    }
+  } else {
+    console.error('Token no encontrado en sessionStorage');
+    this.toastr.warning('Sesión no iniciada');
+    this.routerPath.navigate(['/auth/login']);
+  }
+}
+
 
 }

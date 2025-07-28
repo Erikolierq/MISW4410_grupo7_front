@@ -13,9 +13,10 @@ export class EncabezadoService {
 
 constructor(private http: HttpClient) { }
 
-darRolUsuario(idUsuario: any): Observable<any> {
-  const url = `${this.apiUrl}/usuario/info/${idUsuario}`;
-  return this.http.get<any>(url);
+ darRolUsuario(token: string): Observable<any> {
+  const url = `${this.apiUrl}/auth/verify-token`;
+  const body = { token };
+  return this.http.post<any>(url, body);
 }
 
 }

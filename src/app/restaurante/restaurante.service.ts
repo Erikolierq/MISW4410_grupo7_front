@@ -31,7 +31,7 @@ export class RestauranteService {
     const headers = new HttpHeaders({
       "Authorization": `Bearer ${sessionStorage.getItem("token")}`
     })
-    return this.http.post<Restaurante>(`${this.apiUrl}/restaurantes`, restaurante, { headers: headers })
+    return this.http.post<Restaurante>(`${this.apiUrl}/restaurante/create`, restaurante, { headers: headers })
   }
 
   editarRestaurante(restaurante: Restaurante): Observable<Restaurante> {
@@ -76,8 +76,9 @@ export class RestauranteService {
     return this.http.delete(`${this.apiUrl}/restaurante/${id}`, { headers: headers });
   }
 
-  darRolUsuario(idUsuario: any): Observable<any> {
-    const url = `${this.apiUrl}/usuario/info/${idUsuario}`;
-    return this.http.get<any>(url);
-  }
+ darRolUsuario(token: string): Observable<any> {
+  const url = `${this.apiUrl}/auth/verify-token`;
+  const body = { token };
+  return this.http.post<any>(url, body);
+}
 }
